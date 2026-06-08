@@ -1,40 +1,64 @@
+# -- Number of exporter pod replicas. Scale up if scraping many targets simultaneously.
 replicaCount: 1
 
 image:
+  # -- The image repository to pull from.
   repository: quay.io/prometheuscommunity/fortigate-exporter
+  # -- The image pull policy.
   pullPolicy: IfNotPresent
+  # -- Overrides the image tag.
   tag: "main-distroless"
 
 config:
+  # -- The FortiGate API URL used to generate the internal authentication map.
   targetUrl: ""
+  # -- Skips TLS verification for the exporter's target map generation.
   insecureSkipVerify: false
+  # -- List of endpoints to explicitly include or exclude from scraping.
   probes: {}
 
 exporter:
+  # -- Timeout in seconds for the exporter to fetch data from FortiGate.
   scrapeTimeout: 30
+  # -- Timeout in seconds for the establishment of HTTPS connections.
   httpsTimeout: 10
+  # -- Allows the exporter binary to turn off TLS validation globally.
   insecure: false
+  # -- Maximum amount of BGP paths to fetch per IP stack version.
   maxBgpPaths: 10000
+  # -- Maximum amount of VPN users to fetch (0 means no limit).
   maxVpnUsers: 0
 
 auth:
+  # -- Name of an existing Kubernetes Secret containing the API token.
   existingSecret: ""
+  # -- The key inside the existing Secret that holds the token string.
   secretKey: "token"
 
+# -- Custom DNS entries to inject into the pod's /etc/hosts file.
 hostAliases: []
 
 service:
+  # -- Creates a Kubernetes Service to expose the exporter metrics port.
   enabled: false
+  # -- The type of Kubernetes Service to create.
   type: ClusterIP
+  # -- The port the Service will route traffic through.
   port: 9710
 
 serviceMonitor:
+  # -- Creates a Prometheus Operator ServiceMonitor object.
   enabled: false
+  # -- The FortiGate API URL passed as a parameter during the Prometheus scrape phase.
   targetUrl: ""
+  # -- The interval at which Prometheus will scrape the exporter.
   interval: 30s
+  # -- The timeout applied to the Prometheus scrape request.
   scrapeTimeout: 10s
+  # -- Custom labels to add to the ServiceMonitor to ensure discovery by Prometheus.
   labels: {}
 
+# -- CPU and memory requests and limits for the exporter container.
 resources:
   limits:
     cpu: 200m
@@ -43,6 +67,11 @@ resources:
     cpu: 50m
     memory: 64Mi
 
+# -- Node labels for pod assignment.
 nodeSelector: {}
 
+# -- Tolerations for pod assignment.
 tolerations: []
+
+# -- Array of extra Kubernetes manifests to deploy alongside the chart.
+extraObjects: []
