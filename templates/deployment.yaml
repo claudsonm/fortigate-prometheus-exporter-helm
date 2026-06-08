@@ -14,6 +14,10 @@ spec:
       labels:
         {{- include "fortigate-exporter.selectorLabels" . | nindent 8 }}
     spec:
+      {{- with .Values.hostAliases }}
+      hostAliases:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       securityContext:
         fsGroup: 65532
       initContainers:
