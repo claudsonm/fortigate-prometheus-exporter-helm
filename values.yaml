@@ -10,9 +10,18 @@ config:
   insecureSkipVerify: false
   probes: {}
 
+exporter:
+  scrapeTimeout: 30
+  httpsTimeout: 10
+  insecure: false
+  maxBgpPaths: 10000
+  maxVpnUsers: 0
+
 auth:
   existingSecret: ""
   secretKey: "token"
+
+hostAliases: []
 
 service:
   enabled: false
@@ -21,6 +30,7 @@ service:
 
 serviceMonitor:
   enabled: false
+  targetUrl: ""
   interval: 30s
   scrapeTimeout: 10s
   labels: {}
@@ -36,5 +46,3 @@ resources:
 nodeSelector: {}
 
 tolerations: []
-
-hostAliases: []

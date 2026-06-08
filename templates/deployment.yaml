@@ -45,6 +45,13 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
             - "-auth-file=/config/fortigate-key.yaml"
+            - "-scrape-timeout={{ .Values.exporter.scrapeTimeout }}"
+            - "-https-timeout={{ .Values.exporter.httpsTimeout }}"
+            - "-max-bgp-paths={{ .Values.exporter.maxBgpPaths }}"
+            - "-max-vpn-users={{ .Values.exporter.maxVpnUsers }}"
+            {{- if .Values.exporter.insecure }}
+            - "-insecure"
+            {{- end }}
           ports:
             - name: metrics
               containerPort: 9710
