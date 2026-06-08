@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "fortigate-exporter.fullname" . }}
+  labels:
+    {{- include "fortigate-exporter.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "fortigate-exporter.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "fortigate-exporter.selectorLabels" . | nindent 8 }}
+    spec:
+      securityContext:
+        fsGroup: 65532
+      initContainers:
+        - name: render-config
+          image: alpine:3.19
+          command:
+            - /bin/sh
+            - -c
+            - |
+              sed "s|__FORTIGATE_TOKEN__|${FORTIGATE_TOKEN}|g" /tmpl/fortigate-key.yaml.tmpl > /config/fortigate-key.yaml
+          env:
+            - name: FORTIGATE_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ required "auth.existingSecret is required" .Values.auth.existingSecret }}
+                  key: {{ required "auth.secretKey is required" .Values.auth.secretKey }}
+          volumeMounts:
+            - name: config-tmpl
+              mountPath: /tmpl
+            - name: config-volume
+              mountPath: /config
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - "-auth-file=/config/fortigate-key.yaml"
+          ports:
+            - name: metrics
+              containerPort: 9710
+              protocol: TCP
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+              readOnly: true
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: config-tmpl
+          configMap:
+            name: {{ include "fortigate-exporter.fullname" . }}
+        - name: config-volume
+          emptyDir: {}
