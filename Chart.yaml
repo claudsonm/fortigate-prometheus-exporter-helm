@@ -2,7 +2,7 @@ apiVersion: v2
 name: fortigate-prometheus-exporter
 description: Helm chart for prometheus-community/fortigate_exporter
 type: application
-version: 0.2.0
+version: 0.2.1
 appVersion: 1.25.0
 home: "https://github.com/claudsonm/fortigate-prometheus-exporter-helm"
 sources:
