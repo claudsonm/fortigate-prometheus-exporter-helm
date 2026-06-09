@@ -2,7 +2,7 @@
 
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/fortigate-prometheus-exporter)](https://artifacthub.io/packages/search?repo=fortigate-prometheus-exporter)
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.25.0](https://img.shields.io/badge/AppVersion-1.25.0-informational?style=flat-square)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.25.0](https://img.shields.io/badge/AppVersion-1.25.0-informational?style=flat-square)
 
 Helm chart for prometheus-community/fortigate_exporter
 
@@ -11,10 +11,10 @@ Helm chart for prometheus-community/fortigate_exporter
 Run the following command to deploy the exporter:
 
 ```bash
-helm install my-fortigate-prometheus-exporter oci://ghcr.io/claudsonm/fortigate-prometheus-exporter --version 0.1.0
+helm install my-fortigate-prometheus-exporter oci://ghcr.io/claudsonm/fortigate-prometheus-exporter --version 0.2.0
 ```
 
-**Homepage:** <https://claudsonm.github.io/fortigate-prometheus-exporter-helm>
+**Homepage:** <https://github.com/claudsonm/fortigate-prometheus-exporter-helm>
 
 ## Maintainers
 
@@ -45,7 +45,7 @@ helm install my-fortigate-prometheus-exporter oci://ghcr.io/claudsonm/fortigate-
 | hostAliases | list | `[]` | Custom DNS entries to inject into the pod's /etc/hosts file. |
 | image.pullPolicy | string | `"IfNotPresent"` | The image pull policy. |
 | image.repository | string | `"quay.io/prometheuscommunity/fortigate-exporter"` | The image repository to pull from. |
-| image.tag | string | `"main-distroless"` | Overrides the image tag. |
+| image.tag | string | `"v1.25.0"` | Overrides the image tag. |
 | nodeSelector | object | `{}` | Node labels for pod assignment. |
 | replicaCount | int | `1` | Number of exporter pod replicas. Scale up if scraping many targets simultaneously. |
 | resources | object | `{"limits":{"cpu":"200m","memory":"256Mi"},"requests":{"cpu":"50m","memory":"64Mi"}}` | CPU and memory requests and limits for the exporter container. |
