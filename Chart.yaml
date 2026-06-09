@@ -4,7 +4,7 @@ description: Helm chart for prometheus-community/fortigate_exporter
 type: application
 version: 0.1.0
 appVersion: 1.25.0
-home: "https://claudsonm.github.io/fortigate-prometheus-exporter-helm"
+home: "https://github.com/claudsonm/fortigate-prometheus-exporter-helm"
 sources:
   - "https://github.com/claudsonm/fortigate-prometheus-exporter-helm"
   - "https://github.com/prometheus-community/fortigate_exporter"
