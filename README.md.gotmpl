@@ -1,0 +1,25 @@
+{{ template "chart.header" . }}
+
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/fortigate-prometheus-exporter)](https://artifacthub.io/packages/search?repo=fortigate-prometheus-exporter)
+
+{{ template "chart.versionBadge" . }}{{ template "chart.typeBadge" . }}{{ template "chart.appVersionBadge" . }}
+
+{{ template "chart.description" . }}
+
+## Installation
+
+Run the following command to deploy the exporter:
+
+```bash
+helm install my-fortigate-prometheus-exporter oci://ghcr.io/claudsonm/fortigate-prometheus-exporter --version {{ .Version }}
+```
+
+{{ template "chart.homepageLine" . }}
+
+{{ template "chart.maintainersSection" . }}
+
+{{ template "chart.sourcesSection" . }}
+
+{{ template "chart.requirementsSection" . }}
+
+{{ template "chart.valuesSection" . }}
