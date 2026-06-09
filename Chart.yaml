@@ -1,19 +1,19 @@
 apiVersion: v2
-name: fortigate-exporter
+name: fortigate-prometheus-exporter
 description: Helm chart for prometheus-community/fortigate_exporter
 type: application
 version: 0.1.0
-appVersion: "main"
-home: "https://github.com/claudsonm/fortigate-exporter-helm-chart"
+appVersion: 1.25.0
+home: "https://claudsonm.github.io/fortigate-prometheus-exporter-helm"
 sources:
-  - "https://github.com/claudsonm/fortigate-exporter-helm-chart"
+  - "https://github.com/claudsonm/fortigate-prometheus-exporter-helm"
   - "https://github.com/prometheus-community/fortigate_exporter"
 maintainers:
   - name: claudsonm
     url: "https://github.com/claudsonm"
 annotations:
   artifacthub.io/images: |
-    - name: fortigate-exporter
-      image: quay.io/prometheuscommunity/fortigate-exporter:main-distroless
+    - name: fortigate-prometheus-exporter
+      image: quay.io/prometheuscommunity/fortigate-exporter:v1.25.0
   artifacthub.io/category: "monitoring"
   artifacthub.io/license: "MIT"
