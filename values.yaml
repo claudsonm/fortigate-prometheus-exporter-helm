@@ -7,7 +7,7 @@ image:
   # -- The image pull policy.
   pullPolicy: IfNotPresent
   # -- Overrides the image tag.
-  tag: "main-distroless"
+  tag: "v1.25.0"
 
 config:
   # -- The FortiGate API URL used to generate the internal authentication map.
