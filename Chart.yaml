@@ -12,9 +12,6 @@ maintainers:
   - name: claudsonm
     url: "https://github.com/claudsonm"
 annotations:
-  artifacthub.io/images: |
-    - name: fortigate-prometheus-exporter
-      image: quay.io/prometheuscommunity/fortigate-exporter:v1.25.0
   artifacthub.io/category: "monitoring-logging"
   artifacthub.io/license: "MIT"
   artifacthub.io/maintainers: |
