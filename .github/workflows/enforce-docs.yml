@@ -1,0 +1,21 @@
+name: Enforce Helm Documentation
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  validate-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Run helm-docs
+        uses: norwoodj/helm-docs@v1.14.2
+
+      - name: Verify Documentation State
+        run: |
+          git update-index --refresh
+          git diff-index --quiet HEAD || (echo "Helm documentation is outdated. Run helm-docs locally and push the updated README.md." && exit 1)
