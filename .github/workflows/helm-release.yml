@@ -3,7 +3,7 @@ name: Release Helm Chart to GHCR
 on:
   push:
     tags:
-      - "v*"
+      - "*"
   workflow_dispatch:
 
 permissions:
