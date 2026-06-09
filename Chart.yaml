@@ -17,3 +17,6 @@ annotations:
       image: quay.io/prometheuscommunity/fortigate-exporter:v1.25.0
   artifacthub.io/category: "monitoring-logging"
   artifacthub.io/license: "MIT"
+  artifacthub.io/maintainers: |
+    - name: Claudson Martins
+      email: me@claudsonmartins.com
