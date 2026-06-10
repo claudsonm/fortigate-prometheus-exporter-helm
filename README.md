@@ -2,7 +2,7 @@
 
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/fortigate-prometheus-exporter)](https://artifacthub.io/packages/search?repo=fortigate-prometheus-exporter)
 
-![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.25.0](https://img.shields.io/badge/AppVersion-1.25.0-informational?style=flat-square)
+![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.25.0](https://img.shields.io/badge/AppVersion-1.25.0-informational?style=flat-square)
 
 Helm chart for prometheus-community/fortigate_exporter
 
@@ -11,7 +11,7 @@ Helm chart for prometheus-community/fortigate_exporter
 Run the following command to deploy the exporter:
 
 ```bash
-helm install my-fortigate-prometheus-exporter oci://ghcr.io/claudsonm/fortigate-prometheus-exporter --version 0.3.0
+helm install my-fortigate-prometheus-exporter oci://ghcr.io/claudsonm/fortigate-prometheus-exporter --version 0.3.1
 ```
 
 **Homepage:** <https://github.com/claudsonm/fortigate-prometheus-exporter-helm>

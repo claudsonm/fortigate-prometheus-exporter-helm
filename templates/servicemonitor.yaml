@@ -20,4 +20,9 @@ spec:
           - {{ required "serviceMonitor.targetUrl is required" .Values.serviceMonitor.targetUrl }}
       interval: {{ .Values.serviceMonitor.interval }}
       scrapeTimeout: {{ .Values.serviceMonitor.scrapeTimeout }}
+      relabelings:
+        - sourceLabels: [__param_target]
+          regex: (?:https?://)?([^:/]+).*
+          targetLabel: instance
+          replacement: $1
 {{- end }}
