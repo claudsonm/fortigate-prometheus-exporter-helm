@@ -67,6 +67,9 @@ resources:
     cpu: 50m
     memory: 64Mi
 
+# -- Additional custom labels to add to the exporter pods.
+podLabels: {}
+
 # -- Node labels for pod assignment.
 nodeSelector: {}
 

@@ -2,7 +2,7 @@
 
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/fortigate-prometheus-exporter)](https://artifacthub.io/packages/search?repo=fortigate-prometheus-exporter)
 
-![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.25.0](https://img.shields.io/badge/AppVersion-1.25.0-informational?style=flat-square)
+![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.25.0](https://img.shields.io/badge/AppVersion-1.25.0-informational?style=flat-square)
 
 Helm chart for prometheus-community/fortigate_exporter
 
@@ -11,7 +11,7 @@ Helm chart for prometheus-community/fortigate_exporter
 Run the following command to deploy the exporter:
 
 ```bash
-helm install my-fortigate-prometheus-exporter oci://ghcr.io/claudsonm/fortigate-prometheus-exporter --version 0.2.2
+helm install my-fortigate-prometheus-exporter oci://ghcr.io/claudsonm/fortigate-prometheus-exporter --version 0.3.0
 ```
 
 **Homepage:** <https://github.com/claudsonm/fortigate-prometheus-exporter-helm>
@@ -47,6 +47,7 @@ helm install my-fortigate-prometheus-exporter oci://ghcr.io/claudsonm/fortigate-
 | image.repository | string | `"quay.io/prometheuscommunity/fortigate-exporter"` | The image repository to pull from. |
 | image.tag | string | `"v1.25.0"` | Overrides the image tag. |
 | nodeSelector | object | `{}` | Node labels for pod assignment. |
+| podLabels | object | `{}` | Additional custom labels to add to the exporter pods. |
 | replicaCount | int | `1` | Number of exporter pod replicas. Scale up if scraping many targets simultaneously. |
 | resources | object | `{"limits":{"cpu":"200m","memory":"256Mi"},"requests":{"cpu":"50m","memory":"64Mi"}}` | CPU and memory requests and limits for the exporter container. |
 | service.enabled | bool | `false` | Creates a Kubernetes Service to expose the exporter metrics port. |
